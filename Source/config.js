@@ -1,2 +1,2 @@
 //Kept this here because of Heroku. Normally I would hide it
-var MAPKEY = process.env.MAPKEY || 5000;
+var MAPKEY; // = process.env.MAPKEY;

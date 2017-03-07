@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var MAPKEY = process.env.MAPKEY;
 
 app.set('port', (process.env.PORT || 5000));
 
