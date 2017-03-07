@@ -68,5 +68,6 @@ function mercY(lat) {
 
 function windowResized() {
   resizeCanvas(window.innerWidth, window.innerHeight);
+  preload();
   setup();
 };
