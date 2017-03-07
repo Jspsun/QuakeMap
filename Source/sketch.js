@@ -15,8 +15,8 @@ function preload() {
   mapHeight = min(1024, window.innerHeight);
 
 
-  //MAPKEY is a constant stored in a .env file which is not included in the repo. Get your own key :)
-  mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + key);
+  //MAPKEY is a constant stored in a config file which is not included in the repo. Get your own key :)
+  mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + process.env.MAPKEY);
 
   earthquakes = loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
 }
