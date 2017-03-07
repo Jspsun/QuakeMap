@@ -15,7 +15,7 @@ function preload() {
   mapHeight = min(1024, window.innerHeight);
 
 
-  //MAPKEY is a constant stored in a config file which is not included in the repo. Get your own key :)
+  //MAPKEY is a constant stored in a .env file which is not included in the repo. Get your own key :)
   MAPKEY = process.env.MAPKEY;
 
   mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + MAPKEY);
