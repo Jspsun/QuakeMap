@@ -35,16 +35,17 @@ function setup() {
     var data = earthquakes[i].split(/,/);
     var lat = data[1];
     var lon = data[2];
-    var mag = data[4];
+    var realMag = data[4];
 
     var x = mercX(lon) - cx;
     var y = mercY(lat) - cy;
 
-    mag = pow(10, mag);
-    mag = sqrt(mag);
+    //add in different colors for different magnitudes
+
+    var displayMag = sqrt(pow(10, realMag));
 
     var magmax = sqrt(pow(10, 10));
-    var d = map(mag, 0, magmax, 0, 350);
+    var d = map(displayMag, 0, magmax, 0, 350);
     noStroke();
     fill(255, 0, 255, 100);
     ellipse(x, y, d + 2);
