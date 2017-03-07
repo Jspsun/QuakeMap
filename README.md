@@ -26,7 +26,7 @@ A little project demo I put together that visually plots earthquakes using data 
 1. add in your own config.js file to the root directory
   - It should look something like this:   
   ``` javascript
-  var MAPKEY = "LookAtMyAmazingAPIKey";
+  mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + process.env.MAPKEY);
   ```
   - Grab an api key [here](https://www.mapbox.com/studio/):
 2. Thats it.......it's really that easy
