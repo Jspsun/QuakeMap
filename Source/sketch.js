@@ -28,28 +28,70 @@ function setup() {
   imageMode(CENTER);
   image(mapimg, 0, 0);
 
-  var cx = mercX(clon);
-  var cy = mercY(clat);
-
   for (var i = 0; i < earthquakes.length; i++) {
-    var data = earthquakes[i].split(/,/);
-    var lat = data[1];
-    var lon = data[2];
-    var realMag = data[4];
-
-    var x = mercX(lon) - cx;
-    var y = mercY(lat) - cy;
-
-    //add in different colors for different magnitudes
-
-    var displayMag = sqrt(pow(10, realMag));
-
-    var magmax = sqrt(pow(10, 10));
-    var d = map(displayMag, 0, magmax, 0, 350);
-    noStroke();
-    fill(255, 0, 255, 100);
-    ellipse(x, y, d + 2);
+    createEllipse(earthquakes[i].split(/,/), mercX(clon), mercY(clat));
   }
+}
+
+function createEllipse(data, cy, cx) {
+  var lat = data[1];
+  var lon = data[2];
+  var realMag = data[4];
+
+  var x = mercX(lon) - cx;
+  var y = mercY(lat) - cy;
+
+  //add in different colors for different magnitudes
+
+  var displayMag = sqrt(pow(10, realMag));
+
+  var magmax = sqrt(pow(10, 10));
+  var d = map(displayMag, 0, magmax, 0, 350);
+  noStroke();
+
+  //ranges for different colors
+  var color = hexToRgb("#F44336");
+
+  var mag = Math.ceil(realMag);
+  switch (mag) {
+    case 1:
+      color = hexToRgb("#EF9A9A");
+      break;
+    case 2:
+      color = hexToRgb("#E57373");
+      break;
+    case 3:
+      color = hexToRgb("#EF5350");
+      break;
+    case 4:
+      color = hexToRgb("#F44336");
+      break;
+    case 5:
+      color = hexToRgb("#E53935");
+      break;
+    case 6:
+      color = hexToRgb("#D32F2F");
+      break;
+    case 7:
+      color = hexToRgb("#C62828");
+      break;
+    case 8:
+      color = hexToRgb("#B71C1C");
+      break;
+    default:
+      color = hexToRgb("#D50000");
+      break;
+  }
+
+  fill(color[0], color[1], color[2], 100);
+  ellipse(x, y, d + 2);
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+  return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
+
 }
 
 function mercX(lon) {
@@ -70,4 +112,4 @@ function mercY(lat) {
 function windowResized() {
   resizeCanvas(window.innerWidth, window.innerHeight);
   setup();
-};
+};;
