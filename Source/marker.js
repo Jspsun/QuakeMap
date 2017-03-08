@@ -3,6 +3,14 @@ function Marker(data) {
   this.lat = data[1];
   this.lon = data[2];
   this.realMag = data[4];
+
+  var data= {
+    latitude:this.lat,
+    longitude:this.lon,
+    magnitude:this.realMag
+  }
+  ref.push(data);
+
   var x = mercX(this.lon) - cx;
   var y = mercY(this.lat) - cy;
 
@@ -47,6 +55,4 @@ function Marker(data) {
   //set color and make marker
   fill(color[0], color[1], color[2], 100);
   ellipse(x, y, d + 2);
-
-
 }

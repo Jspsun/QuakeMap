@@ -14,6 +14,11 @@ var markers = [];
 var cx;
 var cy;
 
+//database
+var config;
+var database;
+var ref;
+
 //loads up map
 function preload() {
   mapWidth = min(1024, window.innerWidth);
@@ -25,6 +30,19 @@ function preload() {
   mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=pk.eyJ1IjoianNwc3VuIiwiYSI6ImNpeno1YncycDAwbW0yd2tmYmdteHUydHYifQ.EgbNT1BzOhbP0TFTC2paMQ");
 
   earthquakes = loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
+
+  //Initialize Firebase
+  config = {
+    apiKey: "AIzaSyAcalVfAlB8d92ndFkGZ-D0vpNOZxi0_Zw",
+    authDomain: "quakemap-caee7.firebaseapp.com",
+    databaseURL: "https://quakemap-caee7.firebaseio.com",
+    storageBucket: "quakemap-caee7.appspot.com",
+    messagingSenderId: "662155618011"
+  };
+  firebase.initializeApp(config);
+
+  database=firebase.database();
+  ref=database.ref('earthquakes');
 }
 
 //sets up map image and loads up data for earthquakes and makes markers for each one
@@ -36,7 +54,7 @@ function setup() {
   image(mapimg, 0, 0);
 
   for (var i = 0; i < earthquakes.length; i++) {
-    var temp=new Marker(earthquakes[i].split(/,/))
+    var temp=new Marker(earthquakes[i].split(/,/));
     markers.push(temp);
   }
 }
