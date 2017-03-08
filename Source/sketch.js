@@ -14,8 +14,6 @@ function preload() {
   mapWidth = min(1024, window.innerWidth);
   mapHeight = min(1024, window.innerHeight);
 
-
-  //MAPKEY is a constant stored in a config file which is not included in the repo. Get your own key :)
   mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=pk.eyJ1IjoianNwc3VuIiwiYSI6ImNpeno1YncycDAwbW0yd2tmYmdteHUydHYifQ.EgbNT1BzOhbP0TFTC2paMQ");
 
   earthquakes = loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
@@ -50,8 +48,9 @@ function createEllipse(data, cy, cx) {
   noStroke();
 
   //ranges for different colors
-  var color = hexToRgb("#F44336");
+  var color;
 
+  //color based on magnitude
   var mag = Math.ceil(realMag);
   switch (mag) {
     case 1:
@@ -91,7 +90,6 @@ function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
   return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
-
 }
 
 function mercX(lon) {
