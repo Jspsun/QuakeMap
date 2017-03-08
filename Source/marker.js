@@ -1,3 +1,4 @@
+// marker object
 function Marker(data) {
   this.lat = data[1];
   this.lon = data[2];
@@ -43,6 +44,7 @@ function Marker(data) {
       break;
   }
 
+  //set color and make marker
   fill(color[0], color[1], color[2], 100);
   ellipse(x, y, d + 2);
 

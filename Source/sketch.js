@@ -14,6 +14,7 @@ var markers = [];
 var cx;
 var cy;
 
+//loads up map
 function preload() {
   mapWidth = min(1024, window.innerWidth);
   mapHeight = min(1024, window.innerHeight);
@@ -26,6 +27,7 @@ function preload() {
   earthquakes = loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
 }
 
+//sets up map image and loads up data for earthquakes and makes markers for each one
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   background(color(25, 26, 26));
@@ -34,11 +36,12 @@ function setup() {
   image(mapimg, 0, 0);
 
   for (var i = 0; i < earthquakes.length; i++) {
-    // createEllipse(earthquakes[i].split(/,/));
-    markers.push(new Marker(earthquakes[i].split(/,/)));
+    var temp=new Marker(earthquakes[i].split(/,/))
+    markers.push(temp);
   }
 }
 
+//method to deal with the window being resized
 function windowResized() {
   resizeCanvas(window.innerWidth, window.innerHeight);
   setup();
