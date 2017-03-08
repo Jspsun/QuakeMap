@@ -23,10 +23,10 @@ A little project demo I put together that visually plots earthquakes using data 
 - [ ] implement deep learning to predict future earthquakes
 
 ##How you can use my source
-1. add in your own config.js file to the root directory
+1. add in your own API Key file sketch.js file
   - It should look something like this:   
   ``` javascript
-  mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + process.env.MAPKEY);
+  mapimg = loadImage("https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/" + clat + "," + clon + "," + zoom + ",0,0/" + mapWidth + "x" + mapWidth + "?access_token=" + LOOKITSMYKEY);
   ```
   - Grab an api key [here](https://www.mapbox.com/studio/):
 2. Thats it.......it's really that easy
