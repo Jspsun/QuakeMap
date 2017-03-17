@@ -14,11 +14,6 @@ var markers = [];
 var cx;
 var cy;
 
-//database
-var config;
-var database;
-var ref;
-
 //loads up map
 function preload() {
   mapWidth = min(1024, window.innerWidth);
@@ -31,18 +26,7 @@ function preload() {
 
   earthquakes = loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
 
-  //Initialize Firebase
-  config = {
-    apiKey: "AIzaSyAcalVfAlB8d92ndFkGZ-D0vpNOZxi0_Zw",
-    authDomain: "quakemap-caee7.firebaseapp.com",
-    databaseURL: "https://quakemap-caee7.firebaseio.com",
-    storageBucket: "quakemap-caee7.appspot.com",
-    messagingSenderId: "662155618011"
-  };
-  firebase.initializeApp(config);
-
-  database=firebase.database();
-  ref=database.ref('earthquakes');
+  setUpFirebase();
 }
 
 //sets up map image and loads up data for earthquakes and makes markers for each one
@@ -54,10 +38,27 @@ function setup() {
   image(mapimg, 0, 0);
 
   for (var i = 0; i < earthquakes.length; i++) {
+    ////////////////////////////////////////////////////////TEMP DISABLE
+    //send to firebase and deal with duplicates
+    //pushEarthquakeToFB(earthquakes[i].split(/,/));
+  }
+
+  for (var i = 0; i < earthquakes.length; i++) {
     var temp=new Marker(earthquakes[i].split(/,/));
     markers.push(temp);
   }
+  //////////////////////////////////////////////////////TEMPDISABLE
+  //pullFromFB();
 }
+
+// function draw(){
+//   translate(width / 2, height / 2);
+//   //cycle through firebase entries
+//   for (var i = 0; i < earthquakes.length; i++) {
+//     var temp=new Marker(earthquakes[i].split(/,/));
+//     markers.push(temp);
+//   }
+// }
 
 //method to deal with the window being resized
 function windowResized() {

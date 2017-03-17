@@ -1,18 +1,18 @@
-#QuakeMap
+# QuakeMap
 
 ![demo](GitImages/QuakeMapDemo.png)
 
 A little project demo I put together that visually plots earthquakes using data from USGS
 
-##[Live Demo](https://visualquakemap.herokuapp.com/)
+## [Live Demo](https://visualquakemap.herokuapp.com/)
 
-##Tech used:
+## Tech used:
 - JavaScript
 - P5.js
 - REST API's
 - Mapbox API
 
-##Todo
+## Todo
 - [x] implement basic functionality
 - [x] add full screen functionality and "reponsiveness"
 - [ ] optimize for mobile
@@ -22,7 +22,7 @@ A little project demo I put together that visually plots earthquakes using data 
 - [ ] enable clicking of earthquakes for more info
 - [ ] implement deep learning to predict future earthquakes
 
-##How you can use my source
+## How you can use my source
 1. add in your own API Key file sketch.js file
   - It should look something like this:   
   ``` javascript
